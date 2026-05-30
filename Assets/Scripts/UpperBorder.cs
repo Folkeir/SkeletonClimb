@@ -6,6 +6,7 @@ public class UpperBorder : MonoBehaviour
 {
     [SerializeField] CameraScript cameraScript;
     [SerializeField] PlayerSpawn playerSpawn;
+  
     private bool reachedEnd = false;
 
     void Start()
@@ -17,6 +18,8 @@ public class UpperBorder : MonoBehaviour
         if(other.tag == "Player"&& !reachedEnd)
         {
             cameraScript.SpeedBurst();
+            cameraScript.ClimbStarted();
+           
         }
         if(other.tag == "LastBlock")
         {

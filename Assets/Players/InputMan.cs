@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class InputMan : MonoBehaviour
 {
+    private PlayerUI playerUI;
     private PlayerInput playerInput;
     private InputActions inputs;
     private Vector2 aimInputVector = new Vector2(0, 0);
@@ -49,6 +50,7 @@ public class InputMan : MonoBehaviour
     bool isJetPacking = false;
     bool isPunching = false;
     bool lastPunchDir = false;
+    bool isDead = false;
 
 
    
@@ -89,8 +91,9 @@ public class InputMan : MonoBehaviour
     {
        
         Vector3 aimForce = new Vector3(-aimInputVector.x * aimForceMultiplier, aimInputVector.y * aimForceMultiplier, 0);
-        aimVector = aimHand.transform.TransformDirection(Vector3.up).normalized;
-        aimVector = new Vector3(aimVector.x, aimVector.y, 0);
+        // aimVector = aimHand.transform.TransformDirection(Vector3.up).normalized;
+        //aimVector = new Vector3(aimVector.x, aimVector.y, 0);
+        aimVector = new Vector3(-aimInputVector.x, aimInputVector.y, 0).normalized;
         aimHandPos = aimHand.transform.position;
         if (aimInputVector.magnitude > 0.1f)
         {
@@ -238,11 +241,14 @@ public class InputMan : MonoBehaviour
         Invoke("JetPackOn",jetPackResetTime);
         jetpackVfx.Stop();
         jetPackLight.enabled = false;
+        if (!isDead) { playerUI.PlayerBoostUnready(); ; }
     }
     private void JetPackOn()
     {
         jetPackReady = true;
         jetPackReadyEffect.SetActive(true);
+        if (!isDead) { playerUI.PlayerBoostReady(); ; }
+        
     }
     public void AutoStand(bool on)
     {
@@ -276,5 +282,15 @@ public class InputMan : MonoBehaviour
         {
             hats[playerNr].gameObject.SetActive(true);
         }
+    }
+    public void AssignPlayerUI(PlayerUI playerUIToAssign)
+    {
+        
+        playerUI = playerUIToAssign;
+    }
+    public void OnDeath()
+    {
+        playerUI.PlayerDeadIcon();
+        isDead = true;
     }
 }

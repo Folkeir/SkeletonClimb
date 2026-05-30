@@ -16,6 +16,8 @@ public class CameraScript : MonoBehaviour
     [SerializeField] float timeToLerp;
     bool isLerping = false;
     public bool playerSelect = false;
+    public bool climbHasStarted = false;
+   
 
     [SerializeField] Vector3 cameraDirection;
     [SerializeField] CameraShake shake;
@@ -23,6 +25,7 @@ public class CameraScript : MonoBehaviour
     [SerializeField] GameObject lowerBorder;
     [SerializeField] CinemachineVirtualCamera playerSelectCamera;
     [SerializeField] PlayerSpawn playerSpawn;
+    public PlayerInputManager playerInputManager;
 
 
 
@@ -65,6 +68,7 @@ public class CameraScript : MonoBehaviour
 
     public void SetState(int stateIndex)
     {
+       
         switch (stateIndex)
         {
             case 0:
@@ -107,6 +111,10 @@ public class CameraScript : MonoBehaviour
             }
         }
     }
+    public void ClimbStarted()
+    {
+        playerInputManager.DisableJoining();
+    }
     public void EndBlock()
     {
         SetState(0);
@@ -135,5 +143,5 @@ public class CameraScript : MonoBehaviour
         return highestY;
 
 
-}
+    }
 }

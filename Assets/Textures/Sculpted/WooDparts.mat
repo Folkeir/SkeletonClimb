@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: WooDparts
-  m_Shader: {fileID: -6465566751694194690, guid: cf6cc73cedd6ef848b958e28b9a9305f,
+  m_Shader: {fileID: -6465566751694194690, guid: 1183345d7633ec44bb5c32760971041c,
     type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -21,8 +21,24 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Color:
+        m_Texture: {fileID: 2800000, guid: 006242db5da3a654d8147c86c971c09d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Gloss:
+        m_Texture: {fileID: 2800000, guid: bf5b3c73d51d34541a7d4b50361cb277, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Norma:
         m_Texture: {fileID: 2800000, guid: c70667d07e945be47be209f50e87b482, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal:
+        m_Texture: {fileID: 2800000, guid: c70667d07e945be47be209f50e87b482, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_85cb128a40a041b4871215e7c8409e6d_Texture_1:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Smoothness:
@@ -47,6 +63,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Glossiness: 0.28
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors: []

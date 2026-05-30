@@ -13,21 +13,27 @@ public class PlayerSpawn : MonoBehaviour
     public List<GameObject> playerGameObject;
     [SerializeField] CameraScript cameraScript;
     [SerializeField] GameManager gameManager;
+    [SerializeField] UIManager uiManager;
     public int playeramount = 0;
 
     private void Start()
     {
+       
         PlayerInputManager.instance.onPlayerJoined += OnPlayerJoined;
         PlayerInputManager.instance.onPlayerLeft += OnPlayerJoined;
 
     }
     public void OnPlayerJoined(PlayerInput playerInput)
     {
+        
         cameraScript.PlayerSelect();
         Debug.Log("player joined");
         playerGameObject.Add(playerInput.gameObject);
         playerGameObject[playerIndex].transform.position = spawnLocations[playerIndex].transform.position;
-        playerInput.transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).GetComponent<InputMan>().assignPlayerColor(playerIndex);
+        InputMan joiningInputManScript = playerInput.transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).GetComponent<InputMan>();
+        joiningInputManScript.assignPlayerColor(playerIndex);
+        uiManager.EnablePlayerUI(playerIndex);
+        joiningInputManScript.AssignPlayerUI(uiManager.GetPlayerUI(playerIndex));
         playerIndex++;
         playeramount++;
         // playerGameObject[playerIndex] = playerInput.gameObject;
@@ -54,9 +60,6 @@ public class PlayerSpawn : MonoBehaviour
                 break;
             }
         }
-
-
-
     }
 
 }

@@ -20,6 +20,7 @@ public class PlayerKillerBoarder : MonoBehaviour
             cameraScript.PlayerDie();
             dieParticle.transform.position = new Vector3(other.transform.position.x, transform.position.y + 6f, 0);
             dieParticle.Play();
+            other.GetComponent<InputMan>().OnDeath();
             other.gameObject.transform.parent.transform.parent.gameObject.SetActive(false);
             playerSpawn.PlayerDeath(other.gameObject);
         }
