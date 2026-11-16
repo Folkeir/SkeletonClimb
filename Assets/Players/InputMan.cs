@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class InputMan : MonoBehaviour
 {
+    
     private PlayerUI playerUI;
     private PlayerInput playerInput;
     private InputActions inputs;
@@ -22,6 +23,7 @@ public class InputMan : MonoBehaviour
     int currentColorIndex=0;
 
     [SerializeField] GameObject aimReticle;
+    [SerializeField] AimLine aimLine;
     [SerializeField] Rigidbody aimHand;
     [SerializeField] Rigidbody otherHand;
     [SerializeField] Rigidbody head;
@@ -46,6 +48,7 @@ public class InputMan : MonoBehaviour
     [SerializeField] float jetPackResetTime;
     [SerializeField] GameObject jetPackReadyEffect;
     [SerializeField] CameraScript cameraScript;
+    
     bool jetPackReady = true;
     bool isJetPacking = false;
     bool isPunching = false;
@@ -76,15 +79,27 @@ public class InputMan : MonoBehaviour
 
     private void Awake()
     {
+
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         startingZ = transform.position.z;
         hips = GetComponent<Rigidbody>();
         cameraScript = GameObject.Find("GameManagerCamera").GetComponent<CameraScript>();
-       // assignPlayerColor(3);
-       // eyeMaterial = playerMesh.GetComponent<SkinnedMeshRenderer>().materials[1];
+        
+       
+        // assignPlayerColor(3);
+        // eyeMaterial = playerMesh.GetComponent<SkinnedMeshRenderer>().materials[1];
         //materialInstance = new Material(mesh.material);
         //mesh.material = materialInstance;
         //mesh.material.SetVector("_mainColorAdjust", new Vector2(0,0));
+    }
+    private void Start()
+    {
+        Debug.Log("aimLine: " + aimLine);
+        Debug.Log("aimReticle: " + aimReticle);
+        Debug.Log("aimHand: " + aimHand);
+        Debug.Log("head: " + head);
+        Debug.Log("hips: " + hips);
+       
     }
 
     private void FixedUpdate()
@@ -95,6 +110,7 @@ public class InputMan : MonoBehaviour
         //aimVector = new Vector3(aimVector.x, aimVector.y, 0);
         aimVector = new Vector3(-aimInputVector.x, aimInputVector.y, 0).normalized;
         aimHandPos = aimHand.transform.position;
+        
         if (aimInputVector.magnitude > 0.1f)
         {
             aimHand.drag = 8.0f;
@@ -106,8 +122,14 @@ public class InputMan : MonoBehaviour
 
         Vector3 aimPos = new Vector3(transform.position.x + aimVector.x * 3, transform.position.y + +aimVector.y * 3, aimReticleDepth);
         aimReticle.transform.position = aimPos;
+        if (aimLine != null)
+       { 
 
-        aimHand.AddForce(aimForce);
+             aimLine.SetLinePositions(0,head.transform.position + (aimVector*0.5f));
+             aimLine.SetLinePositions(1,head.transform.position + aimVector*2); 
+       }
+
+            aimHand.AddForce(aimForce);
         if (isAutoStand)
         {
             hips.AddForce(Vector3.up * autoStandForce);
