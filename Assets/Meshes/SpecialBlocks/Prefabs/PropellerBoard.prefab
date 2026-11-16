@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c5b30496ac9fd24caf295dc2f0d3a12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  propellerForce: 400
+  propellerForce: 800
 --- !u!1 &6838614100463242153
 GameObject:
   m_ObjectHideFlags: 0

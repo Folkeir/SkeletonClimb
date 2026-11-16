@@ -26,13 +26,15 @@ public class CameraScript : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera playerSelectCamera;
     [SerializeField] PlayerSpawn playerSpawn;
     public PlayerInputManager playerInputManager;
+    [SerializeField] UIManager uiManager;
+    
 
 
 
 
     void Start()
     {
-        SetState(0);
+        SetState(2);
 
     }
 
@@ -91,6 +93,10 @@ public class CameraScript : MonoBehaviour
     {
         shake.ShakeCamera(0.3f, 0.5f);
     }
+    public void SmallShake()
+    {
+        shake.ShakeCamera(0.1f, 0.2f);
+    }
     public void SpeedBurst()
     {
         isLerping = true;
@@ -110,6 +116,8 @@ public class CameraScript : MonoBehaviour
                 players.transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).GetComponent<InputMan>().isAutoStand = false;
             }
         }
+        playerInputManager.DisableJoining();
+        uiManager.DisablePressStart();
     }
     public void ClimbStarted()
     {
