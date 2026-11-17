@@ -10,6 +10,7 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] Sprite playerDeathImage;
     [SerializeField] Sprite playerBoostImage;
 
+
     [SerializeField] GameObject boostEffect;
 
     [SerializeField] DOTweenAnimation shakeAnimaiton;
@@ -40,4 +41,5 @@ public class PlayerUI : MonoBehaviour
     {
         shakeAnimaiton.DOPlay();
     }
+
 }

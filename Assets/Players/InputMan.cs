@@ -114,10 +114,13 @@ public class InputMan : MonoBehaviour
         if (aimInputVector.magnitude > 0.1f)
         {
             aimHand.drag = 8.0f;
+
+            aimLine.SetAlpha(Mathf.Clamp01(aimInputVector.magnitude));
         }
         else
         {
             aimHand.drag = 1;
+            aimLine.SetAlpha(0);
         }
 
         Vector3 aimPos = new Vector3(transform.position.x + aimVector.x * 3, transform.position.y + +aimVector.y * 3, aimReticleDepth);
@@ -125,8 +128,8 @@ public class InputMan : MonoBehaviour
         if (aimLine != null)
        { 
 
-             aimLine.SetLinePositions(0,head.transform.position + (aimVector*0.5f));
-             aimLine.SetLinePositions(1,head.transform.position + aimVector*2); 
+             aimLine.SetLinePositions(0,head.transform.position + (aimVector*1f));
+             aimLine.SetLinePositions(1,head.transform.position + aimVector*1.5f); 
        }
 
             aimHand.AddForce(aimForce);
@@ -304,10 +307,11 @@ public class InputMan : MonoBehaviour
         {
             hats[playerNr].gameObject.SetActive(true);
         }
+
+        aimLine.SetColor(playerNr);
     }
     public void AssignPlayerUI(PlayerUI playerUIToAssign)
-    {
-        
+    {    
         playerUI = playerUIToAssign;
     }
     public void OnDeath()
@@ -315,4 +319,6 @@ public class InputMan : MonoBehaviour
         playerUI.PlayerDeadIcon();
         isDead = true;
     }
+
+
 }

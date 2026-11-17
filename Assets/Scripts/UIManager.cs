@@ -9,11 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private PlayerUI[] playerUI;
     [SerializeField] private GameObject pressToStartImage;
     [SerializeField] private GameObject pressStartText;
-    void Start()
-    {
-        
-    }
-
+   
     public void ShowGameOver()
     {
         gameOver.SetActive(true);
