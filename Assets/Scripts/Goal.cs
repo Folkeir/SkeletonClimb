@@ -1,15 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
-    [SerializeField] GameManager gameManager;
+    [SerializeField] private GameManager gameManager;
+
+    private bool hasBeenReached = false;
+
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if (hasBeenReached)
+            return;
+
+        InputMan player = other.GetComponentInParent<InputMan>();
+
+        if (player == null)
+            return;
+
+        hasBeenReached = true;
+
+        PlayerText playerText = player.GetComponentInChildren<PlayerText>();
+
+        if (playerText != null)
         {
-            gameManager.Victory();
+            playerText.UpdateCoinText();
         }
+
+        gameManager.Victory();
     }
 }

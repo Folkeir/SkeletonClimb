@@ -117,7 +117,7 @@ public class CameraScript : MonoBehaviour
             }
         }
         playerInputManager.DisableJoining();
-        uiManager.DisablePressStart();
+      
     }
     public void ClimbStarted()
     {

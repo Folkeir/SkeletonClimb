@@ -21,4 +21,8 @@ public class PlayerPickUp : MonoBehaviour
 
         Debug.Log(name + " has " + Coins + " coins!");
     }
+    public void ShowCoinAmount()
+    {
+
+    }
 }

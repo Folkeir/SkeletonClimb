@@ -227,20 +227,20 @@ public class InputMan : MonoBehaviour
     {
         isPunching = false;
     }
-    public void Next(InputAction.CallbackContext context)
-    {
-        if (cameraScript.playerSelect&& context.performed)
-        {
-             mesh.material.SetVector("_mainColorAdjust",playerColors[currentColorIndex]);
-            Debug.Log("colorIndex" + currentColorIndex);
-            currentColorIndex++;
-            if(currentColorIndex >= playerColors.Length)
-            {
-                currentColorIndex = 0;
-            }
-            //materialInstance
-        }
-    }
+    //public void Next(InputAction.CallbackContext context)
+    //{
+    //    if (cameraScript.playerSelect&& context.performed)
+    //    {
+    //         mesh.material.SetVector("_mainColorAdjust",playerColors[currentColorIndex]);
+    //        Debug.Log("colorIndex" + currentColorIndex);
+    //        currentColorIndex++;
+    //        if(currentColorIndex >= playerColors.Length)
+    //        {
+    //            currentColorIndex = 0;
+    //        }
+    //        //materialInstance
+    //    }
+    //}
 
     private void OnTriggerEnter(Collider other)
     {
@@ -286,10 +286,8 @@ public class InputMan : MonoBehaviour
             Scene currentScene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(currentScene.name);
         }
-        if (cameraScript.playerSelect && context.performed)
-        {
-            cameraScript.StopPlayerSelect();
-        }
+        //if (cameraScript.playerSelect && context.performed)
+       
     }
     public void assignPlayerColor(int playerNr)
     {

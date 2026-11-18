@@ -21,6 +21,18 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Diffuse:
+        m_Texture: {fileID: 2800000, guid: 5813a640d3af546479f76c98990d1ed8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NML:
+        m_Texture: {fileID: 2800000, guid: 707e0acbdfce0f04eb45a9c587dae9a8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Roughness:
+        m_Texture: {fileID: 2800000, guid: 7a130dbc4d2e4ff43bfd3adc6cb528eb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_1836519d717440da8a497671e2da89f2_Texture_1:
         m_Texture: {fileID: 2800000, guid: 7a130dbc4d2e4ff43bfd3adc6cb528eb, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -54,7 +66,8 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _p1Position: {r: -1.2969122, g: 243.24158, b: 0.035858154, a: 0}
+    - _Tint: {r: 0.8294104, g: 1, b: 0.08018869, a: 0}
+    - _p1Position: {r: -0.6856749, g: -0.8529916, b: -0.07822126, a: 0}
     - _p2Position: {r: 0, g: 0, b: 0, a: 0}
     - _p3Position: {r: 0, g: 0, b: 0, a: 0}
     - _p4Position: {r: 0, g: 0, b: 0, a: 0}

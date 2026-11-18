@@ -5,6 +5,7 @@ using UnityEngine;
 public class FoliageManager : MonoBehaviour
 {
     [SerializeField] private Material foliageMaterial;
+    [SerializeField] private Material foliageMaterial2;
 
     private List<InputMan> players = new List<InputMan>();
 
@@ -37,6 +38,7 @@ public class FoliageManager : MonoBehaviour
             }
 
             foliageMaterial.SetVector(propertyName, position);
+            foliageMaterial2.SetVector(propertyName, position);
         }
     }
 }

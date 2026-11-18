@@ -10,6 +10,8 @@ public class Button : MonoBehaviour
     [SerializeField] float buttonResetTime = 2;
     [SerializeField] bool hatchOpen = false;
     [SerializeField] bool spring = false;
+    [SerializeField] CameraScript cameraScript;
+    bool gameStarted = false;
     float currentResetTime;
     bool buttonResetting = false;
  
@@ -36,7 +38,14 @@ public class Button : MonoBehaviour
         {
             _hatch.OpenHatch();
         }
-
+        if (!gameStarted)
+        {
+            _animation.DOPlay();
+            cameraScript.StopPlayerSelect();
+            gameStarted = true;
+           // transform.parent.gameObject.SetActive(false);
+        }
+        
     }
 
     private void Update()
