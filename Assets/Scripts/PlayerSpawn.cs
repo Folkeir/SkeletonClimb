@@ -14,6 +14,7 @@ public class PlayerSpawn : MonoBehaviour
     [SerializeField] CameraScript cameraScript;
     [SerializeField] GameManager gameManager;
     [SerializeField] UIManager uiManager;
+    [SerializeField] FoliageManager foliageManager;
     public int playeramount = 0;
 
     private void Start()
@@ -36,6 +37,7 @@ public class PlayerSpawn : MonoBehaviour
         joiningInputManScript.AssignPlayerUI(uiManager.GetPlayerUI(playerIndex));
         playerIndex++;
         playeramount++;
+        foliageManager.AddPlayerToGrassList(joiningInputManScript);
         // playerGameObject[playerIndex] = playerInput.gameObject;
 
     }
@@ -47,6 +49,7 @@ public class PlayerSpawn : MonoBehaviour
         {
             if (player.GetComponent<PlayerInput>() == deadPlayer.transform.root.gameObject.GetComponent<PlayerInput>())
             {
+                foliageManager.RemovePlayerFromGrassList(deadPlayer.transform.GetChild(0).GetChild(0).transform.GetComponent<InputMan>());
                 playeramount--;
                 playerGameObject.Remove(player);
 

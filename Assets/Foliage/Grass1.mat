@@ -53,7 +53,11 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    m_Colors: []
+    m_Colors:
+    - _p1Position: {r: 3.419631, g: 0.5815089, b: 0.2168274, a: 0}
+    - _p2Position: {r: 0, g: 0, b: 0, a: 0}
+    - _p3Position: {r: 0, g: 0, b: 0, a: 0}
+    - _p4Position: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &4291953251065528624
 MonoBehaviour:
