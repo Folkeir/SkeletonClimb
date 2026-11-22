@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-5742101611035884076
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 5
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -20,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WoodSpinner
+  m_Name: WoodMechs
   m_Shader: {fileID: -6465566751694194690, guid: 1183345d7633ec44bb5c32760971041c,
     type: 3}
   m_ValidKeywords: []
@@ -35,19 +22,19 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Color:
-        m_Texture: {fileID: 2800000, guid: d592988c9b1ac7c4a9e367c264b850d6, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6939a9a0ced50d04bb71fa632270bc38, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Gloss:
-        m_Texture: {fileID: 2800000, guid: bb179f140579a1c4d907a4894f69c116, type: 3}
+        m_Texture: {fileID: 2800000, guid: ed4aecca737465141906c070da6db9f8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Norma:
-        m_Texture: {fileID: 2800000, guid: 021f964b20e183a47a1f98c5067e506d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 33c80886960a07a459395b5bc67cbb3d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 2800000, guid: 021f964b20e183a47a1f98c5067e506d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 49649b225b23679438d2ac4a46402328, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_85cb128a40a041b4871215e7c8409e6d_Texture_1:
@@ -55,11 +42,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Smoothness:
-        m_Texture: {fileID: 2800000, guid: bb179f140579a1c4d907a4894f69c116, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4bdfbb7bf39186042b1895fa9a70a21e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _diffuse:
-        m_Texture: {fileID: 2800000, guid: d592988c9b1ac7c4a9e367c264b850d6, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0106337e60c4e584ea688efd440e91ce, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -76,8 +63,21 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Glossiness: -0.02
+    - _Glossiness: 0.24
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors: []
   m_BuildTextureStacks: []
+--- !u!114 &8342754338384117895
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5

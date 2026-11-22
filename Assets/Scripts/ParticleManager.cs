@@ -2,12 +2,18 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.VFX;
 
 [System.Serializable]
 public class ParticlePoolEntry
 {
     public ParticleType type;
-    public ParticleSystem prefab;
+
+    public bool isVFXG = false;
+
+    public ParticleSystem particlePrefab;
+    public VisualEffect vfxPrefab;
+
     public int poolSize = 10;
 }
 
@@ -17,8 +23,8 @@ public class ParticleManager : MonoBehaviour
 
     [SerializeField] private ParticlePoolEntry[] particleEntries;
 
-    private Dictionary<ParticleType, List<ParticleSystem>> pools =
-        new Dictionary<ParticleType, List<ParticleSystem>>();
+    private Dictionary<ParticleType, List<PooledParticle>> pools =
+     new Dictionary<ParticleType, List<PooledParticle>>();
 
     private void Awake()
     {
@@ -37,7 +43,7 @@ public class ParticleManager : MonoBehaviour
     {
         foreach (ParticlePoolEntry entry in particleEntries)
         {
-            List<ParticleSystem> pool = new List<ParticleSystem>();
+            List<PooledParticle> pool = new List<PooledParticle>();
 
             pools.Add(entry.type, pool);
 
@@ -48,17 +54,28 @@ public class ParticleManager : MonoBehaviour
         }
     }
 
-    private ParticleSystem CreateParticle(
-        ParticlePoolEntry entry,
-        List<ParticleSystem> pool)
+    private PooledParticle CreateParticle(
+     ParticlePoolEntry entry,
+     List<PooledParticle> pool)
     {
-        ParticleSystem particle = Instantiate(entry.prefab, transform);
+        PooledParticle pooled = new PooledParticle();
 
-        particle.gameObject.SetActive(false);
+        if (entry.isVFXG)
+        {
+            pooled.vfx = Instantiate(entry.vfxPrefab, transform);
+            pooled.gameObject = pooled.vfx.gameObject;
+        }
+        else
+        {
+            pooled.particleSystem = Instantiate(entry.particlePrefab, transform);
+            pooled.gameObject = pooled.particleSystem.gameObject;
+        }
 
-        pool.Add(particle);
+        pooled.gameObject.SetActive(false);
 
-        return particle;
+        pool.Add(pooled);
+
+        return pooled;
     }
 
     public void Play(Vector3 position, ParticleType type)
@@ -69,11 +86,10 @@ public class ParticleManager : MonoBehaviour
             return;
         }
 
-        ParticleSystem particle = pools[type].Find(
+        PooledParticle particle = pools[type].Find(
             p => !p.gameObject.activeInHierarchy
         );
 
-        // Expand pool if all particles are currently playing
         if (particle == null)
         {
             ParticlePoolEntry entry = System.Array.Find(
@@ -84,21 +100,48 @@ public class ParticleManager : MonoBehaviour
             particle = CreateParticle(entry, pools[type]);
         }
 
-        particle.transform.position = position;
-
+        particle.gameObject.transform.position = position;
         particle.gameObject.SetActive(true);
 
-        particle.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-        particle.Play(true);
+        if (particle.particleSystem != null)
+        {
+            particle.particleSystem.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            particle.particleSystem.Play(true);
+        }
+        else if (particle.vfx != null)
+        {
+            particle.vfx.gameObject.SetActive(false);
+            particle.vfx.gameObject.SetActive(true);
+
+            particle.vfx.Reinit();
+            particle.vfx.Play();
+        }
 
         StartCoroutine(ReturnParticle(particle));
     }
 
-    private IEnumerator ReturnParticle(ParticleSystem particle)
+    private IEnumerator ReturnParticle(PooledParticle particle)
     {
-        while (particle.IsAlive(true))
+        if (particle.particleSystem != null)
         {
-            yield return null;
+            while (particle.particleSystem.IsAlive(true))
+            {
+                yield return null;
+            }
+        }
+        else if (particle.vfx != null)
+        {
+            // Vänta tills VFX Graph faktiskt har skapat partiklar
+            while (particle.vfx.aliveParticleCount == 0)
+            {
+                yield return null;
+            }
+
+            // Vänta tills alla partiklar har försvunnit
+            while (particle.vfx.aliveParticleCount > 0)
+            {
+                yield return null;
+            }
         }
 
         particle.gameObject.SetActive(false);

@@ -67,7 +67,7 @@ Material:
     - _QueueOffset: 0
     m_Colors:
     - _Tint: {r: 1, g: 1, b: 1, a: 0}
-    - _p1Position: {r: -0.6856749, g: -0.8529916, b: -0.07822126, a: 0}
+    - _p1Position: {r: 0.76313853, g: 82.08667, b: 1.2320557, a: 0}
     - _p2Position: {r: 0, g: 0, b: 0, a: 0}
     - _p3Position: {r: 0, g: 0, b: 0, a: 0}
     - _p4Position: {r: 0, g: 0, b: 0, a: 0}

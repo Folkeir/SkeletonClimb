@@ -27,6 +27,10 @@ public class CameraScript : MonoBehaviour
     [SerializeField] PlayerSpawn playerSpawn;
     public PlayerInputManager playerInputManager;
     [SerializeField] UIManager uiManager;
+    public bool standardPlayMode = true;
+    public bool speedRunMode = false;
+    private float speedRunSpeedMod = 0.1f;
+    private bool gameStarted;
     
 
 
@@ -41,6 +45,20 @@ public class CameraScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (standardPlayMode)
+        {
+            StandardCameraMode();
+            return;
+        }
+        if (speedRunMode && gameStarted)
+        {
+            SpeedRunCameraMode();
+        }
+    }
+    
+    private void StandardCameraMode()
+    {
+        
         if (isLerping)
         {
             currentSpeed = BurstSpeed;
@@ -67,7 +85,23 @@ public class CameraScript : MonoBehaviour
         transform.position = transform.position + (cameraDirection * Time.deltaTime) * currentSpeed * SpeedFromPush;
 
     }
-
+    private void SpeedRunCameraMode()
+    {
+        
+        float playerMid = GetMidpoint();
+        float speed = Time.time * Time.deltaTime * speedRunSpeedMod;
+        if (playerMid > 0.01)
+        {
+             
+            Debug.Log("player mid" + playerMid);
+            transform.position = transform.position + new Vector3(0, playerMid, 0);
+        }
+        else
+        {
+            transform.position = transform.position + new Vector3(0, speed, 0);
+        }
+       
+    }
     public void SetState(int stateIndex)
     {
        
@@ -117,6 +151,7 @@ public class CameraScript : MonoBehaviour
             }
         }
         playerInputManager.DisableJoining();
+        gameStarted = true;
       
     }
     public void ClimbStarted()

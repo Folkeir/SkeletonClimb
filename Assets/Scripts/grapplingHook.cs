@@ -9,6 +9,7 @@ public class grapplingHook : MonoBehaviour
     public InputMan owningPlayerscript;
     [SerializeField] HookedRope hookedRope;
     [SerializeField] float projectileForce = 50.0f;
+    [SerializeField] int hookDamage = 1;
 
     private Animator _anim;
     private Rigidbody _rigidbody;
@@ -48,7 +49,7 @@ public class grapplingHook : MonoBehaviour
         transform.SetParent(collision.transform);
         if (collision.gameObject.GetComponent<Block>() != null)
         {
-            collision.gameObject.GetComponent<Block>().TakeDamage();
+            collision.gameObject.GetComponent<Block>().TakeDamage(hookDamage);
             _rigidbody.isKinematic = false;
         }
         if(collision.gameObject.tag == "Player" || collision.gameObject.tag == "Dynamic" || collision.gameObject.tag == "Enemy")

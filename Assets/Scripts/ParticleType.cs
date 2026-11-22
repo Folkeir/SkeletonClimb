@@ -5,5 +5,6 @@ public enum ParticleType
     Explosion,
     Hit,
     Dust,
-    Grapple
+    Grapple,
+    rockHit
 }

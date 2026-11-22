@@ -10,11 +10,11 @@ public class Block : MonoBehaviour
     MeshFilter _meshFilter;
     [SerializeField] GameObject[] particles;
     [SerializeField] int particleAmount;
-    [SerializeField] VisualEffect breakEffect;
-    [SerializeField] int health = 6;
+    [SerializeField] float health = 6f;
     [SerializeField] GameObject shatteredObject;
     [SerializeField] float shatteredObjectForce = 100;
     [SerializeField] bool hasDamagedMesh =true;
+     bool damageDecalActive = false;
      bool randomizeBlock =false;
     
     [SerializeField] bool explodeable = false;
@@ -82,132 +82,15 @@ public class Block : MonoBehaviour
             {
                 if (collider.gameObject.GetComponent<Block>() != null)
                 {
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
-                    collider.gameObject.GetComponent<Block>().TakeDamage();
+                    collider.gameObject.GetComponent<Block>().TakeDamage(100);
+                   
                 }
                 if(collider.gameObject.tag == "Dynamic" || collider.gameObject.tag == "Player")
                 {
                     if(collider.gameObject.GetComponent<Rigidbody>() != null)
                     {
-                        collider.gameObject.GetComponent<Rigidbody>().AddForce((collider.transform.position - transform.position).normalized * explosionForce, ForceMode.Impulse);
+                        Vector3 explosionForceDirection = new Vector3(collider.transform.position.x - transform.position.x, collider.transform.position.y - transform.position.y, 0f).normalized;
+                        collider.gameObject.GetComponent<Rigidbody>().AddForce(explosionForceDirection * explosionForce, ForceMode.Impulse);
                     }
                    
                 }
@@ -222,19 +105,21 @@ public class Block : MonoBehaviour
     {
         Destroy(gameObject);
     }
-    public void TakeDamage()
+    public void TakeDamage(float damage)
     {
        
-        health--;
+        health -= damage;
         
 
-        breakEffect.Play();
-      //  Debug.Log("TakeDAmage, Current hP: " + health);
-        if (health == 2 && hasDamagedMesh)
+        
+             ParticleManager.Instance.Play(transform.position, ParticleType.rockHit);
+        //  Debug.Log("TakeDAmage, Current hP: " + health);
+        if (health <= 2 && hasDamagedMesh && !damageDecalActive)
         {
 
            // _meshFilter.mesh.Clear();
            // transform.GetChild(0).gameObject.SetActive(true);
+           damageDecalActive = true;
            damageDecal.SetActive(true);
 
         }
